@@ -18,6 +18,9 @@ game.resources = [
      */
     {name: "title_image", type:"image", src: "data/img/gui/title_screen.png"},
 
+    // the main player spriteshee TEST!!!!!!!!
+    {name: "gripe_run_right", type:"image", src: "data/img/sprite/gripe_run_right.png"},
+
     /* Atlases
      * @example
      * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
