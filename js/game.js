@@ -16,34 +16,34 @@ var game = {
         return;
     }
 
-    // add "#debug" to the URL to enable the debug Panel
-    if (document.location.hash === "#debug") {
-        window.onReady(function () {
-            me.plugin.register.defer(debugPanel, "debug");
-        });
-    }
+        // add "#debug" to the URL to enable the debug Panel
+        if (document.location.hash === "#debug") {
+            window.onReady(function () {
+                me.plugin.register.defer(debugPanel, "debug");
+            });
+        }
 
-    // Initialize the audio.
-    me.audio.init("mp3,ogg");
+        // Initialize the audio.
+        me.audio.init("mp3,ogg");
 
-    // Set a callback to run when loading is complete.
-    me.loader.onload = this.loaded.bind(this);
-
-
-
-    // Load the resources.
-    me.loader.preload(game.resources);
+        // Set a callback to run when loading is complete.
+        me.loader.onload = this.loaded.bind(this);
 
 
 
-    // Initialize melonJS and display a loading screen.
-    me.state.change(me.state.LOADING);
-},
+        // Load the resources.
+        me.loader.preload(game.resources);
+
+
+
+        // Initialize melonJS and display a loading screen.
+        me.state.change(me.state.LOADING);
+    },
 
     // Run on game resources loaded.
     "loaded" : function () {
 
-         // set the "Play/Ingame" Screen Object
+        // set the "Play/Ingame" Screen Object
         me.state.set(me.state.MENU, new game.TitleScreen());
 
         // set the "Play/Ingame" Screen Object
@@ -53,7 +53,7 @@ var game = {
         me.state.transition("fade", "#FFFFFF", 250);
 
         // add our player entity in the entity pool
-        // me.entityPool.add("mainPlayer", game.PlayerEntity);
+        me.entityPool.add("mainPlayer", game.PlayerEntity);
         // me.entityPool.add("CoinEntity", game.CoinEntity);
         // me.entityPool.add("EnemyEntity", game.EnemyEntity);
 
