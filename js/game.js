@@ -8,7 +8,6 @@ var game = {
         score : 0
     },
 
-
     // Run on page load.
     "onload" : function () {
     // Initialize the video.
@@ -18,7 +17,7 @@ var game = {
     }
 
     // add "#debug" to the URL to enable the debug Panel
-    if (document.location.hash === "") {
+    if (document.location.hash === "#debug") {
         window.onReady(function () {
             me.plugin.register.defer(debugPanel, "debug");
         });
@@ -39,12 +38,29 @@ var game = {
 
     // Run on game resources loaded.
     "loaded" : function () {
+
+         // set the "Play/Ingame" Screen Object
         me.state.set(me.state.MENU, new game.TitleScreen());
+
+        // set the "Play/Ingame" Screen Object
         me.state.set(me.state.PLAY, new game.PlayScreen());
 
+        // set a global fading transition for the screen
+        me.state.transition("fade", "#FFFFFF", 250);
+
+        // add our player entity in the entity pool
+        // me.entityPool.add("mainPlayer", game.PlayerEntity);
+        // me.entityPool.add("CoinEntity", game.CoinEntity);
+        // me.entityPool.add("EnemyEntity", game.EnemyEntity);
+
+        // enable the keyboard
+        // me.input.bindKey(me.input.KEY.LEFT, "left");
+        // me.input.bindKey(me.input.KEY.RIGHT, "right");
+        // me.input.bindKey(me.input.KEY.X, "jump", true);
 
         // Start the game.
         me.state.change(me.state.MENU);
-        console.log('Welcome to V&A Game Jam');
+        console.log('Game started with MENU ---> Loads TitleScreen');
     }
 };
+
