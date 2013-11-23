@@ -10,9 +10,9 @@ function tile(){
     // in the object, might not be necessary at all
     this.background = "";
 
-    // images for effects: ie: the graphics for a trap or artefact 
+    // images for effects: ie: the graphics for a trap or artefact
     this.effectImages = [];
-    
+
     // the actor currently in the tile - not sure this will be needed
     // but easy to ignore later
     this.occupant;
@@ -30,7 +30,7 @@ function tile(){
         } else {
             console.log('Tile received passable request from', actorObject);
 
-            // we subject the actor to all of the effects currently on this 
+            // we subject the actor to all of the effects currently on this
             // tile
             this.effects.forEach(function(effect, index, array){
                 checkEffect(effect, actorObject, index, array);
@@ -41,7 +41,7 @@ function tile(){
             this.occupant = actorObject;
         }
     };
-    
+
     // Adding effects is straightforward, we're exposing it using a function in
     // case we need to add functionality later.
     this.addEffect = function(effect){
@@ -57,15 +57,15 @@ function tile(){
                 this.effects.splice(i, 1);
                 break;
             }
-        }   
+        }
     };
 
     function checkEffect(effect, actor, index, array){
-        console.log('effect is', effect);   
-        console.log('actor is', actor); 
+        console.log('effect is', effect);
+        console.log('actor is', actor);
         if(effect(actor)){
             console.log('it returned true for destroy');
-            array.splice(index,1); 
+            array.splice(index,1);
         }
     }
 }
@@ -125,7 +125,7 @@ actor = function(role, home, goal, mapData) {
             mapData[this.mapCoord.x][this.mapCoord.y].enterTile(this);
         } else {
             // AI for Archeologist goes here!
-            
+
         }
     };
 
@@ -144,7 +144,7 @@ actor = function(role, home, goal, mapData) {
                 for(var key in buff.modifiers){
                    this.reverseBuff(key, buff.modifiers[key]);
                 }
-                array.splice(index, 1); 
+                array.splice(index, 1);
             } else {
                 buff.duration -= 1;
             }
@@ -154,7 +154,7 @@ actor = function(role, home, goal, mapData) {
     this.reverseBuff(key, value){
         if(key == 'speed'){
             if(value == 0){
-                this.speed = this.normalSpeed;        
+                this.speed = this.normalSpeed;
             } else {
                 this.speed -= value;
             }
