@@ -71,7 +71,7 @@ function tile(){
 }
 
 
-actor = function(goal, mapData) {
+actor = function(role, home, goal, mapData) {
     this.mapCoord = { x: 0, y: 0 };
     this.home = { x: 0, y: 0};
     this.normalGoal = goal;
@@ -81,7 +81,7 @@ actor = function(goal, mapData) {
     this.speed = 5;
 
     this.initGraveRobber = function(mapData){
-        this.init();
+        console.log('Loading GraveRobber');
         this.role = 'graveRobber';
         this.pathfinder = new Pathfinder();
         this.pathfinder.init(map.width, map.height);
@@ -94,12 +94,17 @@ actor = function(goal, mapData) {
     };
 
     this.initArcheologist = function(mapData){
-        this.init();
+        console.log('Loading Archeologist');
         this.role = 'archeologist';
     };
 
-    this.init = function(){
+    this.init = function(role, home, goal, mapData){
         this.goal = {x:0, y:0};
+        if(role == 'archeologist'){
+            this.initArcheologist(mapData);
+        } else if(role == 'graveRobber') {
+            this.initGraveRobber(mapData);
+        }
     };
 
     this.setGoal = function(goal){

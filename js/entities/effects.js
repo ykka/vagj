@@ -99,6 +99,7 @@ var tripWire = function(actor){
 // an archeologist out of harms way as much as slow down a graveRobber 
 var heavyFake = function(actor){
     actor.speed -= 3;
+    actor.setGoal('home');
     actor.buffs.push({
         modifiers:{
             speed: -3,
@@ -110,6 +111,7 @@ var heavyFake = function(actor){
 };
 
 var lightFake = function(actor){
+    actor.setGoal('home');
     actor.buffs.push({
         modifiers:{
             target: 'home'
@@ -118,3 +120,4 @@ var lightFake = function(actor){
     });
     return true;
 };
+
