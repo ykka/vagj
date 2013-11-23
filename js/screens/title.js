@@ -44,6 +44,4 @@ game.TitleScreen = me.ScreenObject.extend({
         me.input.unbindTouch(me.input.KEY.ENTER);
     }
 
-
-
 });
