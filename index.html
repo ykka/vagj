@@ -1,32 +1,61 @@
 <!DOCTYPE HTML>
+<!--[if lt IE 7]>      <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <html>
-	<head>
+	<head charset="utf-8">
 		<title>melonJS Template</title>
-		<link rel="stylesheet" type="text/css" media="screen" href="index.css">
-		<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+        <!-- build:css({.tmp,app}) css/index.css -->
+		<link rel="stylesheet"
+              type="text/css"
+              media="screen"
+              href="css/index.css">
+        <!-- endbuild -->
+
+        <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	</head>
 	<body>
+        <!--[if lt IE 9]>
+        <div class="lt-ie10 alert alert-danger">
+            <h1>
+                <strong>Error: </strong>
+                Your browser is old and bad and you should feel bad.
+            </h1>
+            <a href="http://browsehappy.com/">
+                Upgrade your browser today
+            </a>
+            to be able to use this application.
+        </div>
+        <![endif]-->
 		<!-- Canvas placeholder -->
 		<div id="screen"></div>
 
 		<!-- melonJS Library -->
 		<script type="text/javascript" src="lib/melonJS-0.9.10-min.js"></script>
-
-		<!-- Plugin(s) -->
 		<script type="text/javascript" src="lib/plugins/debugPanel.js"></script>
-		
+
 		<!-- Game Scripts -->
+        <!-- build:js js/game.js -->
 		<script type="text/javascript" src="js/game.js"></script>
 		<script type="text/javascript" src="js/resources.js"></script>
+        <!-- endbuild -->
 
+        <!-- build:js js/entities.js -->
 		<script type="text/javascript" src="js/entities/entities.js"></script>
 		<script type="text/javascript" src="js/entities/HUD.js"></script>
+        <!-- endbuild -->
 
+        <!-- build:js js/screens.js -->
 		<script type="text/javascript" src="js/screens/title.js"></script>
 		<script type="text/javascript" src="js/screens/play.js"></script>
-		
+		<!-- endbuild -->
+
 		<!-- Bootstrap & Mobile optimization tricks -->
 		<script type="text/javascript">
 			window.onReady(function onReady() {

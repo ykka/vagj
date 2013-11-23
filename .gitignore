@@ -50,3 +50,5 @@ Thumbs.db
 .smbdelete*
 
 
+node_modules/*
+bower_components/*
