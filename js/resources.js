@@ -36,7 +36,6 @@ game.resources = [
      */
 
 
-
     // From boilerplate
     {name: "gripe_run_right",     type:"image", src: "data/img/sprite/gripe_run_right.png"},
     {name: "area01_bkg0",         type:"image", src: "data/img/area01_bkg0.png"},
