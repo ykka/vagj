@@ -71,13 +71,14 @@ function tile(){
 }
 
 
-actor = function(role, home, goal, mapData) {
+actor = function(role, facing, home, goal, mapData) {
     this.mapCoord = { x: 0, y: 0 };
     this.home = { x: 0, y: 0};
     this.normalGoal = goal;
     this.goal = goal;
     this.buffs = [];
     this.normalSpeed = 5;
+    this.facing = facing;
     this.speed = 5;
 
     this.initGraveRobber = function(mapData){
@@ -118,19 +119,37 @@ actor = function(role, home, goal, mapData) {
         }
     };
 
-    this.nextStep = function() {
+    this.nextStep = function(mapData) {
         if(this.role == 'graveRobber'){
-            this.position = this.pathfinder.getNextStep();
+            this.mapCoord = this.pathfinder.getNextStep();
             // call the enter on selected file;
             mapData[this.mapCoord.x][this.mapCoord.y].enterTile(this);
         } else {
             // AI for Archeologist goes here!
-
+            this.position = this.archeologistStep(mapData);
         }
     };
 
+    this.archeologistStep = function(mapData){
+        switch (this.facing){
+            case 'north':
+                this.position.y += this.speed;
+                break;
+            case 'south':
+                this.position.y -= this.speed;
+                break;
+            case 'west':
+                //
+                this.position.x -= this.speed;
+                break;
+            case 'east':
+                //
+                this.position.x += this.speed;
+                break;
+        }
+    };
 
-    this.checkBuffs(){
+    this.checkBuffs = function(){
         this.buffs.forEach(function(buff, index, array){
             if(buff.duration == "tillHome"){
                 //SPECIAL CASE, TILL HOME
@@ -149,20 +168,20 @@ actor = function(role, home, goal, mapData) {
                 buff.duration -= 1;
             }
         });
-    }
+    };
 
-    this.reverseBuff(key, value){
+    this.reverseBuff = function(key, value){
         if(key == 'speed'){
-            if(value == 0){
+            if(value === 0){
                 this.speed = this.normalSpeed;
             } else {
                 this.speed -= value;
             }
         }
-    }
+    };
 
-    this.runTurn = function(){
+    this.runTurn = function(mapData){
         this.checkBuffs();
-        this.nextStep();
+        this.nextStep(mapData);
     };
 };
