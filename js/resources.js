@@ -10,7 +10,7 @@ game.resources = [
     /*
      * Maps.
      */
-    {name: "testMap", type: "tmx", src: "data/map/test_map.tmx"},
+    {name: "testMap", type: "tmx", src: "data/map/map1.tmx"},
 
     /* Graphics.
      * @example
