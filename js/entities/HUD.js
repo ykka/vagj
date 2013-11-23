@@ -9,8 +9,8 @@ game.HUD.Container = me.ObjectContainer.extend({
         this.z = Infinity;
         this.name = "HUD";
 
-        this.addChild(new game.HUD.ScoreItem(5, 5));
-        this.addChild(new game.HUD.LeveltItem(700,700));
+        this.addChild(new game.HUD.ScoreItem(40, 530));
+        this.addChild(new game.HUD.LevelItem(680,530));
     }
 });
 
@@ -19,7 +19,7 @@ game.HUD.LevelItem = me.Renderable.extend({
     init: function(x, y) {
         this.parent(new me.Vector2d(x, y), 10, 10);
         this.font = new me.BitmapFont("32x32_font", 32);
-        this.font.set("left");
+        this.font.set("right");
         this.level = -1;
         this.floating = true;
     },
@@ -33,7 +33,7 @@ game.HUD.LevelItem = me.Renderable.extend({
     },
 
     draw : function (context) {
-        this.font.draw(context, 'Level: ' + this.level, this.pos.x, this.pos.y);
+        this.font.draw(context, this.level, this.pos.x, this.pos.y);
     }
 
 });
@@ -50,8 +50,6 @@ game.HUD.ScoreItem = me.Renderable.extend({
     },
 
     update : function () {
-        // we don't do anything fancy here, so just
-        // return true if the score has been updated
         if (this.score !== game.data.score) {
             this.score = game.data.score;
             return true;
@@ -60,7 +58,7 @@ game.HUD.ScoreItem = me.Renderable.extend({
     },
 
     draw : function (context) {
-        this.font.draw(context, 'Score: ' + this.score, this.pos.x, this.pos.y);
+        this.font.draw(context, this.score, this.pos.x, this.pos.y);
     }
 
 });
