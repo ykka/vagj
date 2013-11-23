@@ -29,7 +29,7 @@ module.exports = function(grunt) {
             files: [
               '{,*/}*.html',
               '{.tmp,css/{,*/}*.css',
-              '{.tmp,js/{,*/}*.js',
+              '{.tmp,js}{,*/}*.js',
               //'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
             ]
           }
@@ -38,9 +38,9 @@ module.exports = function(grunt) {
             dist: {
               files: [{
                 expand: true,
-                cwd: 'js/',
+                cwd: 'js',
                 src: '{,*/}*.coffee',
-                dest: '.tmp/js',
+                dest: '.tmp/js/',
                 ext: '.js'
               }]
             },
