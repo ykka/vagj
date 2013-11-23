@@ -1,15 +1,14 @@
 // create a custom loading screen
-game.VAPlayScreen = me.ScreenObject.extend(
+game.PlayScreen = me.ScreenObject.extend(
 {
    // constructor
-   init: function()
-   {
-
+   init: function() {
       console.log('VAPLayScreen:: init() called.');
 
       // pass true to the parent constructor
       // as we draw our progress bar in the draw function
       this.parent(true);
+
       // a font logo
       this.logo = new me.Font('century gothic', 32, 'white');
       // flag to know if we need to refresh the display
@@ -18,8 +17,25 @@ game.VAPlayScreen = me.ScreenObject.extend(
       this.loadPercent = 0;
       // setup a callback
       me.loader.onProgress = this.onProgressUpdate.bind(this);
-
    },
+
+    onResetEvent: function() {
+        console.log('Reset Event Called');
+
+        console.log('Loading TestMap');
+        // load a level
+        me.levelDirector.loadLevel("testMap");
+
+        console.log('Resetting both score and level, both to 0!');
+        // reset the score
+        game.data.score = 0;
+        game.data.level = 0;
+
+        console.log('Adding HUD inside playscreen');
+        // add our HUD to the game world
+        this.HUD = new game.HUD.Container();
+        me.game.world.addChild(this.HUD);
+    },
 
    // will be fired by the loader each time a resource is loaded
    onProgressUpdate: function(progress)
@@ -48,27 +64,19 @@ game.VAPlayScreen = me.ScreenObject.extend(
       console.log('VAPlayScreen:: onDestroyEvent(), cancelling logo');
       // "nullify" all fonts
       this.logo = null;
+
+      me.game.world.removeChild(me.game.world.getEntityByProp("name", "HUD")[0]);
    },
 
-   // draw function
    draw : function(context)
    {
-      console.log('VAPLayScreen:: draw()');
-
-      console.log('  clearing surface, to black');
       me.video.clearSurface (context, "black");
-
-      console.log('  measuring logo');
-      logo_width = this.logo.measureText(context,"V&A Game Jam").width;
-
-      console.log('  drawing logo');
+      var logo_width = this.logo.measureText(context,"V&A Game Jam").width;
       this.logo.draw(context,
                      "awesome loading screen",
                      ((me.video.getWidth() - logo_width) / 2),
                      (me.video.getHeight() + 60) / 2);
 
-      // display a progressive loading bar
-      console.log('   drawing progress par');
       var width = Math.floor(this.loadPercent * me.video.getWidth());
 
       // draw the progress bar
