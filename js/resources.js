@@ -28,10 +28,14 @@ game.resources = [
      * {name: "example_bgm", type: "audio", src: "data/bgm/", channel : 1},
      */
 
+     {name: "Va_gamejam", type: "audio", src: "data/bgm/", channel : 1},
+
     /* Sound effects.
      * @example
      * {name: "example_sfx", type: "audio", src: "data/sfx/", channel : 2}
      */
+
+
 
     // From boilerplate
     {name: "gripe_run_right",     type:"image", src: "data/img/sprite/gripe_run_right.png"},
