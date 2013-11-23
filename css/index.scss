@@ -17,7 +17,6 @@ body {
     margin: 0;
 }
 
-
 #screen {
     margin: 20px auto;
     canvas {
@@ -34,4 +33,3 @@ body {
         image-rendering: optimize-contrast;
         -ms-interpolation-mode: nearest-neighbor;
     }
-}

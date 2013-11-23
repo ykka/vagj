@@ -9,6 +9,7 @@ game.TitleScreen = me.ScreenObject.extend({
 
     // reset function
     onResetEvent: function() {
+
         if (this.title === null) {
             this.title = me.loader.getImage("title_image");
         }
@@ -18,6 +19,7 @@ game.TitleScreen = me.ScreenObject.extend({
         }
 
         me.input.bindKey(me.input.KEY.ENTER, "enter", true);
+        me.input.bindTouch(me.input.KEY.ENTER);
 
         // play something
         // me.audio.play("cling");
@@ -39,6 +41,7 @@ game.TitleScreen = me.ScreenObject.extend({
 
     onDestroyEvent: function() {
         me.input.unbindKey(me.input.KEY.ENTER);
+        me.input.unbindTouch(me.input.KEY.ENTER);
     }
 
 
