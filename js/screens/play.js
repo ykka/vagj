@@ -15,7 +15,8 @@ game.PlayScreen = me.ScreenObject.extend(
         game.data.score = 0;
         game.data.level = 0;
 
-        me.audio.playTrack("va_gamejam");
+        // Disabling game music for development.
+        // me.audio.playTrack("va_gamejam");
 
         // add our HUD to the game world
         this.HUD = new game.HUD.Container();
@@ -40,8 +41,7 @@ game.PlayScreen = me.ScreenObject.extend(
 
    // on destroy event
    onDestroyEvent : function () {
-      console.log('removing hud');
-      me.game.world.removeChild(me.game.world.getEntityByProp("name", "HUD")[0]);
+      me.game.world.removeChild(this.HUD);
    },
 
    draw : function(context) {
