@@ -19,6 +19,22 @@ game.HUD.Container = me.ObjectContainer.extend({
     }
 });
 
+game.HUD.PauseContainer = me.ObjectContainer.extend({
+
+    init: function() {
+        this.parent();
+        this.isPersistent = true;
+        this.collidable = false;
+        this.z = Infinity;
+        this.name = "PAUSEHUD";
+
+        this.addChild(new game.HUD.Restarting(200, 200));
+
+        // this.addChild(new game.HUD.TopBar(0,0));
+        // this.addChild(new game.HUD.BottomBar(0,0));
+    }
+});
+
 // Top Bar contains level and score
 game.HUD.TopBar = me.ObjectContainer.extend({
    init: function() {
@@ -30,7 +46,25 @@ game.HUD.TopBar = me.ObjectContainer.extend({
 
         this.addChild(new game.HUD.ScoreItem(710, 15));
         this.addChild(new game.HUD.LevelItem(10, 15));
-        this.addChild(new game.HUD.PauseButton(290, 15));
+        this.addChild(new game.HUD.PauseButton(250, 15));
+
+        this.pauseButtonRectangle = new me.Rect(new me.Vector2d(290, 15), 150, 50);
+
+        // register on the 'mousemove' event
+        me.input.registerPointerEvent('click', this.pauseButtonRectangle, this.mouseMove.bind(this));
+    },
+
+    onDestroyEvent: function() {
+        me.input.releasePointerEvent('click', this.pauseButtonRectangle, this.mouseMove.bind(this));
+    },
+
+    mouseMove: function() {
+        me.state.change(me.state.PAUSE);
+
+        setTimeout(function(){
+            me.state.change(me.state.PLAY);
+        }, 1000);
+
     }
 });
 
@@ -125,7 +159,7 @@ game.HUD.PauseButton = me.Renderable.extend({
     },
 
     draw : function (context) {
-        this.font.draw(context, 'MENU', this.pos.x, this.pos.y);
+        this.font.draw(context, 'RESTART', this.pos.x, this.pos.y);
     }
 });
 
@@ -153,5 +187,23 @@ game.HUD.Belt = me.Renderable.extend({
         this.font.draw(context, 'BELT', this.pos.x, this.pos.y);
     }
 });
+
+
+game.HUD.Restarting = me.Renderable.extend({
+    init: function(x, y) {
+
+        this.parent(new me.Vector2d(x, y), 10, 10);
+        this.anchorPoint = new me.Vector2d(1,1);
+        this.font = new me.BitmapFont("32x32_font", 32);
+        this.font.set("left");
+        this.floating = true;
+    },
+
+    draw : function (context) {
+        this.font.draw(context, 'RESTARTING', this.pos.x, this.pos.y);
+    }
+});
+
+
 
 

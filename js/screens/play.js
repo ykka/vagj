@@ -41,7 +41,7 @@ game.PlayScreen = me.ScreenObject.extend(
 
    // on destroy event
    onDestroyEvent : function () {
-      me.game.world.removeChild(me.game.world.getEntityByProp("name", "HUD")[0]);
+      me.game.world.removeChild(this.HUD);
    },
 
    draw : function(context) {
