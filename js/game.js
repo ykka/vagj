@@ -37,10 +37,12 @@ var game = {
         me.state.transition("fade", "#271900", 250);
 
         // add our player entity in the entity pool
-        me.entityPool.add("mainPlayer", game.PlayerEntity);
+        //me.entityPool.add("mainPlayer", game.PlayerEntity);
         me.entityPool.add("archeologist", game.Archeologist);
         me.entityPool.add("graveRobber", game.GraveRobber);
         // me.entityPool.add("CoinEntity", game.CoinEntity);
+        me.entityPool.add("robber", game.RobberEntity);
+        me.entityPool.add("artifact", game.ArtifactEntity);
         // me.entityPool.add("EnemyEntity", game.EnemyEntity);
 
         // enable the keyboard
@@ -113,7 +115,7 @@ function addCompassNorth(x,y){
     var testSettings={
         image: 'crown2',
         spritewidth: 32,
-        spriteheight:32 
+        spriteheight:32
     };
     var obj = new game.compassNorth(x, y, testSettings);
     var mapTile = getMapTile(game.mapData, x, y);
@@ -126,7 +128,7 @@ function addCompassSouth(x,y){
     var testSettings={
         image: 'dagger1',
         spritewidth: 32,
-        spriteheight:32 
+        spriteheight:32
     };
     var obj = new game.compassSouth(x, y, testSettings);
     var mapTile = getMapTile(game.mapData, x, y);
@@ -137,7 +139,7 @@ function addCompassEast(x,y){
     var testSettings={
         image: 'instrument2',
         spritewidth: 32,
-        spriteheight:32 
+        spriteheight:32
     };
     var obj = new game.compassEast(x, y, testSettings);
     var mapTile = getMapTile(game.mapData, x, y);
@@ -150,7 +152,7 @@ function addCompassWest(x,y){
     var testSettings={
         image: 'axe',
         spritewidth: 32,
-        spriteheight:32 
+        spriteheight:32
     };
     var obj = new game.compassWest(x, y, testSettings);
     console.log("yeah");
@@ -166,16 +168,16 @@ function addItem(x, y){
     }
     console.log('item', game.item);
     if(game.item == 'east'){
-        addCompassEast(x,y);    
+        addCompassEast(x,y);
     }
     if(game.item == 'west'){
-        addCompassWest(x,y);    
+        addCompassWest(x,y);
     }
     if(game.item == 'north'){
-        addCompassNorth(x,y);    
+        addCompassNorth(x,y);
     }
     if(game.item == 'south'){
-        addCompassSouth(x,y);    
+        addCompassSouth(x,y);
     }
 }
 

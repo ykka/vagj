@@ -91,16 +91,15 @@ game.resources = [
     {name: "32x32_font", type:"image", src: "data/img/font/32x32_font.png"},
 
     // the main player spriteshee TEST!!!!!!!!
-    {name: "gripe_run_right", type:"image", src: "data/img/sprite/gripe_run_right.png"},
-    {name: "walking_robber", type:"image", src: "data/img/sprite/walking_robber.png"},
+    // {name: "gripe_run_right", type:"image", src: "data/img/sprite/gripe_run_right.png"},
+    // {name: "walking_robber", type:"image", src: "data/img/sprite/walking_robber.png"},
     // {name: "Archeologist", type:"image", src: "data/img/sprite/archeologist2.png"},
     {name: "walking_archeologist", type:"image", src: "data/img/sprite/walking_archeologist.png"},
     {name: "walking_zombie", type:"image", src: "data/img/sprite/walking_zombie.png"},
     {name: "rising_zombie", type:"image", src: "data/img/sprite/rising_zombie.png"},
+    {name: "spinning_coin_gold", type:"image", src: "data/img/sprite/spinning_coin_gold.png"},
 
-
-    /* Atlases
-     * @example
+     /* @example
      * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
      */
 
