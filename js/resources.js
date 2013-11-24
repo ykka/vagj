@@ -21,9 +21,9 @@ game.resources = [
 
     // the main player spriteshee TEST!!!!!!!!
     {name: "gripe_run_right", type:"image", src: "data/img/sprite/gripe_run_right.png"},
+    {name: "spinning_coin_gold", type:"image", src: "data/img/sprite/spinning_coin_gold.png"},
 
-    /* Atlases
-     * @example
+     /* @example
      * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
      */
 
