@@ -1,4 +1,4 @@
-Victoria & Albert Museum's GameJam 2013
+Victoria & Albert GameJam 2013
 ====
 
 Game created during V&amp;A GameJam Session in November 2013. The team had about 11 hours to create a game themed around the subject *Hidden Stories*.
