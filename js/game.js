@@ -29,7 +29,7 @@ var game = {
     "loaded" : function () {
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
-        me.state.transition("fade", "#FFFFFF", 250);
+        me.state.transition("fade", "#271900", 250);
 
         // add our player entity in the entity pool
         me.entityPool.add("mainPlayer", game.PlayerEntity);

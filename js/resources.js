@@ -22,6 +22,7 @@ game.resources = [
     // the main player spriteshee TEST!!!!!!!!
     {name: "gripe_run_right", type:"image", src: "data/img/sprite/gripe_run_right.png"},
     {name: "walking_robber", type:"image", src: "data/img/sprite/walking_robber.png"},
+    {name: "walking_archeologist", type:"image", src: "data/img/sprite/walking_archeologist.png"},
 
 
     /* Atlases
