@@ -96,10 +96,9 @@ game.resources = [
     {name: "walking_archeologist", type:"image", src: "data/img/sprite/walking_archeologist.png"},
     {name: "walking_zombie", type:"image", src: "data/img/sprite/walking_zombie.png"},
     {name: "rising_zombie", type:"image", src: "data/img/sprite/rising_zombie.png"},
+    {name: "spinning_coin_gold", type:"image", src: "data/img/sprite/spinning_coin_gold.png"},
 
-
-    /* Atlases
-     * @example
+     /* @example
      * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
      */
 

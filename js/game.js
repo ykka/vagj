@@ -41,6 +41,8 @@ var game = {
         me.entityPool.add("archeologist", game.Archeologist);
         me.entityPool.add("graveRobber", game.GraveRobber);
         // me.entityPool.add("CoinEntity", game.CoinEntity);
+        me.entityPool.add("robber", game.RobberEntity);
+        me.entityPool.add("artifact", game.ArtifactEntity);
         // me.entityPool.add("EnemyEntity", game.EnemyEntity);
 
         // enable the keyboard
