@@ -1,6 +1,15 @@
-vagj
+Victoria & Albert Museum's GameJam 2013
 ====
 
-V&amp;A GameJam Axomic
+Game created during V&amp;A GameJam Session in November 2013. The team had about 11 hours to create a game themed around the subject *Hidden Stories*.
 
-test
+**Team Members**:
+
+- Duarte Aragao ( Developer )
+- John Louis Swaine ( Developer )
+- David Crawford ( Illustrator, Tiles, SFX ) 
+- Amy Lee ( Illustrator, Sprites, Animations )
+- Mike Driver ( Developer )
+- Hugh Waldren ( Illustrator )
+- Patryk Kabaj ( Developer )
+

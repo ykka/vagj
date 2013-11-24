@@ -70,6 +70,12 @@ game.resources = [
 {name: "sword1", type:"image", src: "data/img/items/sword1.png"},
 {name: "tree001", type:"image", src: "data/img/items/tree001.png"},
 
+{name: "compass_s", type:"image", src: "data/img/items/compass_s.png"},
+{name: "compass_n", type:"image", src: "data/img/items/compass_n.png"},
+{name: "compass_e", type:"image", src: "data/img/items/compass_e.png"},
+{name: "compass_w", type:"image", src: "data/img/items/compass_w.png"},
+
+
 
     /*
      * Maps.
