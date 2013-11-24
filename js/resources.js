@@ -38,6 +38,7 @@ game.resources = [
 {name: "helmet2", type:"image", src: "data/img/items/helmet2.png"},
 {name: "helmet3", type:"image", src: "data/img/items/helmet3.png"},
 {name: "house2", type:"image", src: "data/img/items/house2.png"},
+{name: "house3", type:"image", src: "data/img/house3.png"},
 {name: "instrument1", type:"image", src: "data/img/items/instrument1.png"},
 {name: "instrument2", type:"image", src: "data/img/items/instrument2.png"},
 {name: "instrument3", type:"image", src: "data/img/items/instrument3.png"},
@@ -74,7 +75,7 @@ game.resources = [
     /*
      * Maps.
      */
-    {name: "testMap", type: "tmx", src: "data/map/map1.tmx"},
+    {name: "testMap", type: "tmx", src: "data/map/main_map2.tmx"},
 
     /* Graphics.
      * @example

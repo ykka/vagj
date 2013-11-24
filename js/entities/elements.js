@@ -125,10 +125,10 @@ actor = function(role, facing, home, goal, mapData) {
         if(this.role == 'graveRobber'){
             this.mapCoord = this.pathfinder.getNextStep();
             // call the enter on selected file;
-            mapData[this.mapCoord.x][this.mapCoord.y].enterTile(this);
+//            mapData[this.mapCoord.x][this.mapCoord.y].enterTile(this);
         } else {
             // AI for Archeologist goes here!
-        this.position = this.archeologistStep(mapData);
+            this.position = this.archeologistStep(mapData);
         }
     };
 
@@ -149,6 +149,15 @@ actor = function(role, facing, home, goal, mapData) {
                 this.position.x += this.speed;
                 break;
         }
+    };
+
+    this.foundArtefact = function(artefact){
+       console.log("WE FOUND ARTEFACT", artefact);
+       if(this.role=='archeologist'){
+        alert('Congratulations! This belongs in the museum!');
+       } else {
+        alert('The GraveRobber got there first!!');
+       }
     };
 
     this.checkBuffs = function(){

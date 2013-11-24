@@ -48,31 +48,26 @@ var game = {
          me.input.bindKey(me.input.KEY.UP, "up");
          me.input.bindKey(me.input.KEY.DOWN, "down");
 
-      me.input.registerPointerEvent("mouseup", me.game.viewport, function(event) {
-          console.log('event is', event);
-            addArcheologist(event.x, event.y);
-                        return false;
-        });
+         this.item = "west";
         me.state.change(me.state.MENU);
-        setTimeout(test, 3000);
     }
 };
 
 function test(){
-    addArcheologist();
-    addGraveRobber();
+//    addArcheologist();
+ //   addGraveRobber();
 }
 
 function addArcheologist(x, y){
     var testSettings={
-        facing: 'south',
+        facing: 'east',
         goal: '{"x":50, "y":0}',
         home: '{"x":0, "y":0}',
-        image: 'gripe_run_right',
-        spritewidth: 64,
+        image: 'walking_archeologist',
+        spritewidth: 32,
         spriteheight: 64
     };
-    testArch = new game.Archeologist(x ||10,y || 10, testSettings)
+    testArch = new game.Archeologist(x ||5,y || 5, testSettings)
     me.game.add(testArch, 10);
 }
 
@@ -102,8 +97,6 @@ function setInitialMapData(){
         }
     }
 
-    mapData[0][5].addEffect(stickyTrap);
-    mapData[5][10].addEffect(compassSouth);
 
     return  mapData;
 }
@@ -114,4 +107,75 @@ function getMapTile(mapData, x, y){
     var tileNumberY = Math.round(y / 32);
     return me.mapData[tileNumberX][tileNumberY];
 }
+
+function addCompassNorth(x,y){
+    var testSettings={
+        image: 'crown2',
+        spritewidth: 32,
+        spriteheight:32 
+    };
+    var obj = new game.compassNorth(x, y, testSettings);
+    var mapTile = getMapTile(game.mapData, x, y);
+    console.log("Map tile would be", mapTile);
+    mapTile.addEffect(compassNorth);
+    me.game.add(obj, 9);
+}
+
+function addCompassSouth(x,y){
+    var testSettings={
+        image: 'dagger1',
+        spritewidth: 32,
+        spriteheight:32 
+    };
+    var obj = new game.compassSouth(x, y, testSettings);
+    var mapTile = getMapTile(game.mapData, x, y);
+    mapTile.addEffect(compassSouth);
+    me.game.add(obj, 9);
+}
+function addCompassEast(x,y){
+    var testSettings={
+        image: 'instrument2',
+        spritewidth: 32,
+        spriteheight:32 
+    };
+    var obj = new game.compassEast(x, y, testSettings);
+    var mapTile = getMapTile(game.mapData, x, y);
+    console.log("Map tile would be", mapTile);
+    mapTile.addEffect(compassEast);
+    me.game.add(obj, 9);
+}
+function addCompassWest(x,y){
+    console.log("called");
+    var testSettings={
+        image: 'axe',
+        spritewidth: 32,
+        spriteheight:32 
+    };
+    var obj = new game.compassWest(x, y, testSettings);
+    console.log("yeah");
+    var mapTile = getMapTile(game.mapData, x, y);
+    console.log("Map tile would be", mapTile);
+    mapTile.addEffect(compassWest);
+    me.game.add(obj, 9);
+}
+
+function addItem(x, y){
+    if(false){
+        addArcheologist(event.gameX, event.gameY);
+    }
+    console.log('item', game.item);
+    if(game.item == 'east'){
+        addCompassEast(x,y);    
+    }
+    if(game.item == 'west'){
+        addCompassWest(x,y);    
+    }
+    if(game.item == 'north'){
+        addCompassNorth(x,y);    
+    }
+    if(game.item == 'south'){
+        addCompassSouth(x,y);    
+    }
+}
+
 

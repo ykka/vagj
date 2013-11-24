@@ -28,7 +28,7 @@ var stickyTrap = function(actor){
         console.log("robber slowed for 15 seconds");
         actor.gameObject.setVelocity(1,1);
         setTimeout(function(){
-            actor.gameObject.setVelocity(3,3);
+            actor.gameObject.setVelocity(2.5,2.5);
         }, 15000);
         return true;
     } else {
@@ -37,7 +37,7 @@ var stickyTrap = function(actor){
         console.log("archeologist steps over");
         actor.gameObject.setVelocity(0,0);
         setTimeout(function(){
-            actor.gameObject.setVelocity(3,3);
+            actor.gameObject.setVelocity(2.5,2.5);
         }, 500);
 
         // This effect won't be destroyed when it has been walked on by the

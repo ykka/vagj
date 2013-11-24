@@ -7,6 +7,14 @@ game.PlayScreen = me.ScreenObject.extend(
 
       this.invalidate = false;
       this.loadPercent = 0;
+      me.input.registerPointerEvent("mouseup", me.game.viewport, function(event) {
+          console.log('TRUE EVENT');
+            addItem(event.gameX -20, event.gameY-20);
+            return false;
+        });
+        setTimeout(function(){
+         game.data.isLive = true;   
+        }, 1000);
       me.loader.onProgress = this.onProgressUpdate.bind(this);
    },
 

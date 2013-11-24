@@ -13,7 +13,6 @@ game.PlayerEntity = me.ObjectEntity.extend({
         this.setVelocity(3, 3);
 
         // set the display to follow our position on both axis
-        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 
     },
 
@@ -73,7 +72,7 @@ game.Archeologist = me.ObjectEntity.extend({
         this.gravity = 0;
 
         // set the default horizontal & vertical speed (accel vector)
-        this.setVelocity(3, 3);
+        this.setVelocity(2.5, 2.5);
         this.actor = new actor('archeologist', 
                                settings.facing, 
                                JSON.parse(settings.home),
@@ -82,6 +81,7 @@ game.Archeologist = me.ObjectEntity.extend({
        this.actor.gameObject = this;
         // set the display to follow our position on both axis
 
+        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
     },
 
     update: function() {
@@ -161,11 +161,13 @@ game.GraveRobber = me.ObjectEntity.extend({
             console.log('in the box'); 
         }
         if (me.input.isKeyPressed('left')) {
+            game.item = 'west';
             // flip the sprite on horizontal axis
             this.flipX(true);
             // update the entity velocity
             this.vel.x -= this.accel.x * me.timer.tick;
         } else if (me.input.isKeyPressed('right')) {
+            game.item = 'east';
             // unflip the sprite
             this.flipX(false);
             // update the entity velocity
@@ -175,10 +177,12 @@ game.GraveRobber = me.ObjectEntity.extend({
         }
         if (me.input.isKeyPressed('down')) {
             // flip the sprite on horizontal axis
+            game.item = 'south';
             this.flipY(true);
             // update the entity velocity
             this.vel.y += this.accel.y * me.timer.tick;
         } else if (me.input.isKeyPressed('up')) {
+            game.item = 'north';
             // unflip the sprite
             this.flipY(false);
             // update the entity velocity
@@ -203,3 +207,75 @@ game.GraveRobber = me.ObjectEntity.extend({
 
 });
 
+
+
+
+game.compassWest = me.ObjectEntity.extend({
+    /* constructor */
+    init: function(x, y, settings) {
+        console.log('compasswest::init()');
+        // call the constructor
+        this.parent(x, y, settings);
+        this.gravity = 0;
+
+        // set the default horizontal & vertical speed (accel vector)
+        this.setVelocity(0, 0);
+        // set the display to follow our position on both axis
+    },
+
+    update: function() {
+        return false;
+    }
+});
+game.compassSouth = me.ObjectEntity.extend({
+    /* constructor */
+    init: function(x, y, settings) {
+        console.log('compassNorth::init()');
+        // call the constructor
+        this.parent(x, y, settings);
+        this.gravity = 0;
+
+        // set the default horizontal & vertical speed (accel vector)
+        this.setVelocity(0, 0);
+        // set the display to follow our position on both axis
+    },
+
+    update: function() {
+        return false;
+    }
+});
+game.compassNorth = me.ObjectEntity.extend({
+    /* constructor */
+    init: function(x, y, settings) {
+        console.log('compassNorth::init()');
+        // call the constructor
+        this.parent(x, y, settings);
+        this.gravity = 0;
+
+        // set the default horizontal & vertical speed (accel vector)
+        this.setVelocity(0, 0);
+        // set the display to follow our position on both axis
+    },
+
+    update: function() {
+        return false;
+    }
+});
+
+game.compassEast = me.ObjectEntity.extend({
+    /* constructor */
+    init: function(x, y, settings) {
+        console.log('compassNorth::init()');
+        // call the constructor
+        this.parent(x, y, settings);
+        this.gravity = 0;
+
+        // set the default horizontal & vertical speed (accel vector)
+        this.setVelocity(0, 0);
+        // set the display to follow our position on both axis
+    },
+
+    update: function() {
+        return false;
+    }
+});
