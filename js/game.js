@@ -2,54 +2,32 @@
 /* Game namespace */
 var game = {
 
-    // an object where to store game information
     data : {
-        // score
-        score : 0
+        score : 0,
+        level : 0
     },
 
-    // Run on page load.
     "onload" : function () {
-    // Initialize the video.
-    if (!me.video.init("screen", 720, 576, true, 'auto')) {
-        alert("Your browser does not support HTML5 canvas.");
-        return;
-    }
+        if (!me.video.init("screen", 720, 576, true, 'auto')) {
+            alert("Your browser does not support HTML5 canvas.");
+            return;
+        }
 
-    // add "#debug" to the URL to enable the debug Panel
-    if (document.location.hash === "#debug") {
-        window.onReady(function () {
-            me.plugin.register.defer(debugPanel, "debug");
-        });
-    }
+        if (document.location.hash === "#debug") {
+            window.onReady(function () {
+                me.plugin.register.defer(debugPanel, "debug");
+            });
+        }
 
-    // Initialize the audio.
-    me.audio.init("mp3,ogg");
+        me.audio.init("mp3,ogg");
+        me.loader.onload = this.loaded.bind(this);
+        me.loader.preload(game.resources);
+        me.state.change(me.state.LOADING);
+    },
 
-    // Set a callback to run when loading is complete.
-    me.loader.onload = this.loaded.bind(this);
-
-
-
-    // Load the resources.
-    me.loader.preload(game.resources);
-
-
-
-    // Initialize melonJS and display a loading screen.
-    me.state.change(me.state.LOADING);
-},
-
-    // Run on game resources loaded.
     "loaded" : function () {
-
-         // set the "Play/Ingame" Screen Object
         me.state.set(me.state.MENU, new game.TitleScreen());
-
-        // set the "Play/Ingame" Screen Object
         me.state.set(me.state.PLAY, new game.PlayScreen());
-
-        // set a global fading transition for the screen
         me.state.transition("fade", "#FFFFFF", 250);
 
         // add our player entity in the entity pool
@@ -62,9 +40,7 @@ var game = {
         // me.input.bindKey(me.input.KEY.RIGHT, "right");
         // me.input.bindKey(me.input.KEY.X, "jump", true);
 
-        // Start the game.
         me.state.change(me.state.MENU);
-        console.log('Game started with MENU ---> Loads TitleScreen');
     }
 };
 

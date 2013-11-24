@@ -68,7 +68,7 @@ var Pathfinder = function(mapWidth,mapHeight){
             this.state.y = this.path[this.state.pathIndex][1];
         }
         return this.getPosition();
-    }
+    };
 
     this.getPosition = function(){
         return {

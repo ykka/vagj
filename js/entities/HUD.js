@@ -14,6 +14,7 @@ game.HUD.Container = me.ObjectContainer.extend({
     }
 });
 
+// Level
 game.HUD.LevelItem = me.Renderable.extend({
 
     init: function(x, y) {
@@ -22,6 +23,7 @@ game.HUD.LevelItem = me.Renderable.extend({
         this.font.set("right");
         this.level = -1;
         this.floating = true;
+        this.anchorPoint = (new me.Vector2d(), 1,1);
     },
 
     update : function () {
@@ -38,7 +40,7 @@ game.HUD.LevelItem = me.Renderable.extend({
 
 });
 
-
+// Score
 game.HUD.ScoreItem = me.Renderable.extend({
 
     init: function(x, y) {
