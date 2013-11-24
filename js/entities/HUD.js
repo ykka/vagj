@@ -29,9 +29,20 @@ game.HUD.PauseContainer = me.ObjectContainer.extend({
         this.name = "PAUSEHUD";
 
         this.addChild(new game.HUD.Restarting(200, 200));
+    }
+});
 
-        // this.addChild(new game.HUD.TopBar(0,0));
-        // this.addChild(new game.HUD.BottomBar(0,0));
+game.HUD.WinningContainer = me.ObjectContainer.extend({
+
+    init: function() {
+        this.parent();
+        this.isPersistent = true;
+        this.collidable = false;
+        this.z = Infinity;
+        this.name = "WINNINGHUD";
+
+        this.addChild(new game.HUD.Winning(300, 300));
+
     }
 });
 
@@ -63,7 +74,7 @@ game.HUD.TopBar = me.ObjectContainer.extend({
 
         setTimeout(function(){
             me.state.change(me.state.PLAY);
-        }, 1000);
+        }, 1500);
 
     }
 });
@@ -191,6 +202,7 @@ game.HUD.Belt = me.Renderable.extend({
 
 game.HUD.Restarting = me.Renderable.extend({
     init: function(x, y) {
+        console.log('restarting called');
 
         this.parent(new me.Vector2d(x, y), 10, 10);
         this.anchorPoint = new me.Vector2d(1,1);
@@ -204,6 +216,21 @@ game.HUD.Restarting = me.Renderable.extend({
     }
 });
 
+
+game.HUD.Winning = me.Renderable.extend({
+    init: function(x, y) {
+
+        this.parent(new me.Vector2d(x, y), 10, 10);
+        this.anchorPoint = new me.Vector2d(1,1);
+        this.font = new me.BitmapFont("32x32_font", 32);
+        this.font.set("left");
+        this.floating = true;
+    },
+
+    draw : function (context) {
+        this.font.draw(context, 'YOU WIN', this.pos.x, this.pos.y);
+    }
+});
 
 
 
