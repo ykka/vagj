@@ -27,6 +27,9 @@ module.exports = function(grunt) {
               livereload: LIVERELOAD_PORT
             },
             files: [
+              // '*.js', // uncomment these if you want to reload automatically
+              // './*/*/*.js',
+              // './*/*.js',
               '{,*/}*.html',
               '{.tmp,css/{,*/}*.css',
               '{.tmp,js}{,*/}*.js',

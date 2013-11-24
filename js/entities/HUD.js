@@ -8,11 +8,13 @@ game.HUD.Container = me.ObjectContainer.extend({
         this.collidable = false;
         this.z = Infinity;
         this.name = "HUD";
+        this.addChild(new game.HUD.ScoreItem(40, 530));
 
         this.addChild(new game.HUD.ScoreItem(40, 530));
         this.addChild(new game.HUD.LevelItem(680,530));
     }
 });
+
 
 // Level
 game.HUD.LevelItem = me.Renderable.extend({
@@ -35,7 +37,7 @@ game.HUD.LevelItem = me.Renderable.extend({
     },
 
     draw : function (context) {
-        this.font.draw(context, this.level, this.pos.x, this.pos.y);
+        this.font.draw(context, this.level++, this.pos.x, this.pos.y);
     }
 
 });

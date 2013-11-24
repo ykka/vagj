@@ -1,7 +1,7 @@
 // =====================
 // EFFECTS
 // =====================
-// Effects are effects (heh) applied to a tile. They represent game 
+// Effects are effects (heh) applied to a tile. They represent game
 // mechanics for how actors interact with the tile
 
 // A simple example effect to change an archeologist's facing
@@ -11,7 +11,7 @@ var compassNorth = function(actor){
     if(actor.role == 'archeologist') {
         // We're going to have the archeologist face north
         actor.facing = 'north';
-        
+
         // this effect will be used up when it has been read
         return true;
     }
@@ -25,9 +25,9 @@ var stickyTrap = function(actor){
     actor.speed -= 3;
 
     if(actor.role == 'graveRobber') {
-        // modifiers get stored as a buff, the actor checks each turn for the 
+        // modifiers get stored as a buff, the actor checks each turn for the
         // duration on each buff and ticks it down 1. When it reaches 0 it
-        // reverses the modifier, 
+        // reverses the modifier,
 
         actor.buffs.push({
             modifiers:{
@@ -52,7 +52,7 @@ var stickyTrap = function(actor){
             duration: 1
         });
 
-        // This effect won't be destroyed when it has been walked on by the 
+        // This effect won't be destroyed when it has been walked on by the
         // archeologist
         return false;
     }
@@ -80,8 +80,8 @@ var compassSouth = function(actor){
 };
 
 var tripWire = function(actor){
-    actor.speed == 0;
-    // Trip wires work on both! Beware  
+    actor.speed === 0;
+    // Trip wires work on both! Beware
     actor.buffs.push({
         modifiers:{
             speed: 0
@@ -96,7 +96,7 @@ var tripWire = function(actor){
 // came from at the start)
 // At this point the actor goes back to work!
 // As it works on both actors, it's a sneaky tool which can be used to keep
-// an archeologist out of harms way as much as slow down a graveRobber 
+// an archeologist out of harms way as much as slow down a graveRobber
 var heavyFake = function(actor){
     actor.speed -= 3;
     actor.setGoal('home');
@@ -105,7 +105,7 @@ var heavyFake = function(actor){
             speed: -3,
             target: 'home'
         },
-        duration: 'tillHome' 
+        duration: 'tillHome'
     });
     return true;
 };
@@ -116,7 +116,7 @@ var lightFake = function(actor){
         modifiers:{
             target: 'home'
         },
-        duration: 'tillHome' 
+        duration: 'tillHome'
     });
     return true;
 };

@@ -4,7 +4,7 @@ a player entity
 game.PlayerEntity = me.ObjectEntity.extend({
     /* constructor */
     init: function(x, y, settings) {
-        console.log('playerEntity::init()')
+        console.log('playerEntity::init()');
         // call the constructor
         this.parent(x, y, settings);
         this.gravity = 0;
@@ -50,7 +50,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
         this.updateMovement();
 
         // update animation if necessary
-        if (this.vel.x!=0 || this.vel.y!=0) {
+        if (this.vel.x !== 0 || this.vel.y !== 0) {
             // update object animation
             this.parent();
             return true;
