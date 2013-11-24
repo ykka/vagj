@@ -64,8 +64,10 @@ var Pathfinder = function(mapWidth,mapHeight){
     this.getNextStep = function(){
         if(this.path){
             this.state.pathIndex+=1;
-            this.state.x = this.path[this.state.pathIndex][0];
-            this.state.y = this.path[this.state.pathIndex][1];
+            if (this.path[this.state.pathIndex]) {
+                this.state.x = this.path[this.state.pathIndex][0];
+                this.state.y = this.path[this.state.pathIndex][1];
+            }
         }
         return this.getPosition();
     };
