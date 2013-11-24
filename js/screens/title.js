@@ -35,8 +35,8 @@ game.TitleScreen = me.ScreenObject.extend({
     },
 
     draw: function(context) {
-        context.drawImage(this.title, 50, 50);
-        this.font.draw(context, "PRESS ENTER TO PLAY", 20, 240);
+        context.drawImage(this.title, 0, 0);
+        this.font.draw(context, "PRESS ENTER TO PLAY", 50, 300);
     },
 
     onDestroyEvent: function() {

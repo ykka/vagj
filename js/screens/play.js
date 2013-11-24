@@ -45,6 +45,5 @@ game.PlayScreen = me.ScreenObject.extend(
    },
 
    draw : function(context) {
-      // me.video.clearSurface(context, "black");
    }
 });
