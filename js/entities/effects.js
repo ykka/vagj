@@ -22,35 +22,23 @@ var compassNorth = function(actor){
 // and is largely ignored by an archeologist
 var stickyTrap = function(actor){
     // This effect slows down the actor by 2
-    actor.speed -= 3;
+    console.log('STICKY TRAP');
 
     if(actor.role == 'graveRobber') {
-        // modifiers get stored as a buff, the actor checks each turn for the
-        // duration on each buff and ticks it down 1. When it reaches 0 it
-        // reverses the modifier,
-
-        actor.buffs.push({
-            modifiers:{
-                speed: -3
-                //other keys would be here if you want to add them
-            },
-            // The effect would be applied for 5 turns
-            duration: 5
-        });
-
-        // We say that the effect will be destroyed once it has been walked on
-        // by the robber
+        console.log("robber slowed for 15 seconds");
+        actor.gameObject.setVelocity(1,1);
+        setTimeout(function(){
+            actor.gameObject.setVelocity(3,3);
+        }, 15000);
         return true;
     } else {
         // it's an archeologist, he just has to step over the trap.
-        actor.buffs.push({
-            modifiers:{
-                // He's immobile while he steps over it
-                speed: 0
-            },
-            // But only for 1 turn,
-            duration: 1
-        });
+        //
+        console.log("archeologist steps over");
+        actor.gameObject.setVelocity(0,0);
+        setTimeout(function(){
+            actor.gameObject.setVelocity(3,3);
+        }, 500);
 
         // This effect won't be destroyed when it has been walked on by the
         // archeologist

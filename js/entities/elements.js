@@ -4,7 +4,7 @@
 function tile(){
     this.isPassable = true;
     // The effects array are all the effects currently on this tile
-    this.effects = [stickyTrap, compassNorth];
+    this.effects = [];
 
     // if we want to store the url for the background image for the tile
     // in the object, might not be necessary at all
@@ -26,9 +26,11 @@ function tile(){
     this.enterTile = function(actorObject){
         if(this.artefact){
             // tell the actor she has found the artefact
+            console.log('FOUND ARTEFACT');
             actor.foundArtefact(this.artefact);
         } else {
             console.log('Tile received passable request from', actorObject);
+            console.log('tile is', this);
 
             // we subject the actor to all of the effects currently on this
             // tile
@@ -61,7 +63,6 @@ function tile(){
     };
 
     function checkEffect(effect, actor, index, array){
-        console.log('effect is', effect);
         console.log('actor is', actor);
         if(effect(actor)){
             console.log('it returned true for destroy');
@@ -80,6 +81,7 @@ actor = function(role, facing, home, goal, mapData) {
     this.normalSpeed = 5;
     this.facing = facing;
     this.speed = 5;
+    this.role = role;
 
     this.initGraveRobber = function(mapData){
         console.log('Loading GraveRobber');
@@ -185,3 +187,4 @@ actor = function(role, facing, home, goal, mapData) {
         this.nextStep(mapData);
     };
 };
+
