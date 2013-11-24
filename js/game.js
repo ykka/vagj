@@ -22,6 +22,7 @@ var game = {
         me.audio.init("mp3,ogg");
         me.loader.onload = this.loaded.bind(this);
         me.loader.preload(game.resources);
+
         me.state.change(me.state.LOADING);
     },
 
@@ -31,14 +32,15 @@ var game = {
         me.state.transition("fade", "#FFFFFF", 250);
 
         // add our player entity in the entity pool
-        // me.entityPool.add("mainPlayer", game.PlayerEntity);
+        me.entityPool.add("mainPlayer", game.PlayerEntity);
         // me.entityPool.add("CoinEntity", game.CoinEntity);
         // me.entityPool.add("EnemyEntity", game.EnemyEntity);
 
         // enable the keyboard
-        // me.input.bindKey(me.input.KEY.LEFT, "left");
-        // me.input.bindKey(me.input.KEY.RIGHT, "right");
-        // me.input.bindKey(me.input.KEY.X, "jump", true);
+         me.input.bindKey(me.input.KEY.LEFT, "left");
+         me.input.bindKey(me.input.KEY.RIGHT, "right");
+         me.input.bindKey(me.input.KEY.UP, "up");
+         me.input.bindKey(me.input.KEY.DOWN, "down");
 
         me.state.change(me.state.MENU);
     }

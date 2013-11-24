@@ -5,11 +5,12 @@ game.resources = [
      */
     // our level tileset
     {name: "area01_level_tiles",  type:"image", src: "data/img/map/area01_level_tiles.png"},
+    {name: "map_sprite",  type:"image", src: "data/img/map/map_sprite.png"},
 
     /*
      * Maps.
      */
-    {name: "testMap", type: "tmx", src: "data/map/test_map.tmx"},
+    {name: "testMap", type: "tmx", src: "data/map/map1.tmx"},
 
     /* Graphics.
      * @example
@@ -17,6 +18,9 @@ game.resources = [
      */
     {name: "title_image", type:"image", src: "data/img/gui/title_screen.png"},
     {name: "32x32_font", type:"image", src: "data/img/font/32x32_font.png"},
+
+    // the main player spriteshee TEST!!!!!!!!
+    {name: "gripe_run_right", type:"image", src: "data/img/sprite/gripe_run_right.png"},
 
     /* Atlases
      * @example
